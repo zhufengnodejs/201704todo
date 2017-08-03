@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 import TodoHeader from "./TodoHeader";
 import TodoList from "./TodoList";
+import TodoFooter from "./TodoFooter";
 export default class App extends Component{
   render(){
     return (
@@ -16,7 +17,9 @@ export default class App extends Component{
               <div className="panel-body">
                 <TodoList/>
               </div>
-              <div className="panel-footer">3</div>
+              <div className="panel-footer">
+                <TodoFooter/>
+              </div>
             </div>
           </div>
         </div>
