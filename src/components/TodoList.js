@@ -44,7 +44,16 @@ class TodoList extends Component {
   }
 }
 let mapStateToProps = state => ({
-  list: state.todos.list,
+  list: state.todos.list.filter(item=>{
+    switch (state.filter){
+      case 'active'://如果只要看活动状态，未完成。
+        return !item.completed;
+      case 'completed'://如果只要看未成的
+        return item.completed;
+      default:
+        return true;
+    }
+  }),
   //未完成的待办事项的数量 activeCount==0 意味着全部完成
   activeCount:state.todos.list.filter(item=>!item.completed).length
 });
