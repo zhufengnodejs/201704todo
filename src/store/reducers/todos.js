@@ -36,6 +36,10 @@ export default function(state=initState,action){
       return {
         list:state.list.filter(item=>item.id!=action.id)
       }
+    case types.DEL_COMPLETED:
+      return {
+        list:state.list.filter(item=>!item.completed)
+      }
     default:
       return state;
   }

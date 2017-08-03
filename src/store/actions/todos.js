@@ -15,5 +15,8 @@ export default {
   //删除todo
   delTodo(id){
    return {type:types.DEL_TODO,id};
+  },
+  delCompleted(){
+    return {type:types.DEL_COMPLETED};
   }
 }

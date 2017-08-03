@@ -1,5 +1,13 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import todoActions from '../store/actions/todos';
+/**
+ * 1.增加一个动作类型 action-types.js DEL_COMPLETED
+ * 2.增加一个action  todos.js   delCompleted
+ * 3.为reducer添加一个case  case DEL_COMPLETED
+ * 4.在组件里事件发生的时候调用action方法 this.props.delCompleted
+ */
 class TodoFooter extends Component{
   render(){
     return (
@@ -14,7 +22,9 @@ class TodoFooter extends Component{
           <button style={{marginLeft:5}} className={"btn btn-"+(this.props.filter=='completed'?'warning':'default')}>已完成</button>
         </div>
         <div className="col-sm-3">
-          <button className="btn btn-danger">删除已完成</button>
+          <button
+            onClick={this.props.delCompleted}
+            className="btn btn-danger">删除已完成</button>
         </div>
       </div>
     )
@@ -26,5 +36,5 @@ let mapStateToProps = state => (
     filter:state.filter //all active completed
   }
 )
-//let  mapDispatchToProps = dispatch =>
-export default connect(mapStateToProps)(TodoFooter);
+let  mapDispatchToProps = dispatch => bindActionCreators(todoActions,dispatch)
+export default connect(mapStateToProps,mapDispatchToProps)(TodoFooter);
