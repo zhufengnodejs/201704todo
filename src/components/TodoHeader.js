@@ -5,7 +5,7 @@ import todoActions from '../store/actions/todos';
 class TodoHeader extends Component {
   handleKeyDown = (event)=>{
     let keyCode = event.keyCode;
-    if(keyCode == 13){//如果按下的是回车键的话
+    if(keyCode == 13 && event.target.value){//如果按下的是回车键的话
       let title = event.target.value;//获得到title的值
       this.props.addTodo(title);
       event.target.value = '';

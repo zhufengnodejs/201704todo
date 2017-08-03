@@ -15,6 +15,16 @@ export default function(state=initState,action){
       return {list:[...state.list,{
         id:Date.now(),completed:false,title:action.title
       }]};
+    //如果要修改todo完成状态的话
+    case types.CHANGE_TODO_COMPLETED:
+      return {
+        list:state.list.map(item=>{
+          if(item.id === action.id){
+            item.completed = !item.completed;
+          }
+          return item;
+        })
+      }
     default:
       return state;
   }
