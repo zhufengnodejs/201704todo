@@ -3,9 +3,15 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import todoActions from '../store/actions/todos';
 class TodoHeader extends Component {
+  handleKeyDown = (event)=>{
+    let keyCode = event.keyCode;
+    if(keyCode == 13){
+
+    }
+  }
   render() {
     return (
-      <input type="text" className="form-control"/>
+      <input onKeyDown={this.handleKeyDown} type="text" className="form-control"/>
     )
   }
 }
