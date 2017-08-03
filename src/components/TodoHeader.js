@@ -14,6 +14,7 @@ let mapDispatchToProps=dispatch=>bindActionCreators(todoActions,dispatch);
 /*let mapDispatchToProps= dispatch=>(
   {
     addTodo:(title)=>dispatch(todoActions.addTodo(title))
+ addTodo:(title)=>dispatch({type:'ADD_TODO',title})
   }
 )*/
 export default connect(
