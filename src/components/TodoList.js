@@ -24,6 +24,7 @@ class TodoList extends Component {
         {
           this.props.list.length>0?selectAll:null
         }
+
         {
           this.props.list.map((todo,index)=>(
             <li key={index} className="list-group-item">
@@ -36,7 +37,9 @@ class TodoList extends Component {
             </li>
           ))
         }
+
       </ul>
+
     )
   }
 }

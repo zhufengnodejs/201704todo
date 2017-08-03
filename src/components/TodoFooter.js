@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import todoActions from '../store/actions/todos';
+import filterActions from '../store/actions/filter';
 /**
  * 1.增加一个动作类型 action-types.js DEL_COMPLETED
  * 2.增加一个action  todos.js   delCompleted
@@ -16,10 +17,10 @@ class TodoFooter extends Component{
           你还有件{this.props.activeCount}待办事项
         </div>
         <div className="col-sm-5">
-          <button className={"btn btn-"+(this.props.filter=='all'?'warning':'default')}>全部</button>
-          <button style={{marginLeft:5}}
+          <button onClick={()=>this.props.changeFilter('all')} className={"btn btn-"+(this.props.filter=='all'?'warning':'default')}>全部</button>
+          <button onClick={()=>this.props.changeFilter('active')} style={{marginLeft:5}}
                   className={"btn btn-"+(this.props.filter=='active'?'warning':'default')}>未完成</button>
-          <button style={{marginLeft:5}} className={"btn btn-"+(this.props.filter=='completed'?'warning':'default')}>已完成</button>
+          <button onClick={()=>this.props.changeFilter('completed')}  style={{marginLeft:5}} className={"btn btn-"+(this.props.filter=='completed'?'warning':'default')}>已完成</button>
         </div>
         <div className="col-sm-3">
           <button
@@ -36,5 +37,10 @@ let mapStateToProps = state => (
     filter:state.filter //all active completed
   }
 )
-let  mapDispatchToProps = dispatch => bindActionCreators(todoActions,dispatch)
+let  mapDispatchToProps = dispatch => (
+  {
+    ...bindActionCreators(todoActions,dispatch),
+    ...bindActionCreators(filterActions,dispatch)
+  }
+)
 export default connect(mapStateToProps,mapDispatchToProps)(TodoFooter);
