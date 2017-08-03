@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import './App.css'
 import TodoHeader from "./TodoHeader";
 import TodoList from "./TodoList";
 export default class App extends Component{

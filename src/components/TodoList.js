@@ -3,10 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import todoActions from '../store/actions/todos';
 /**
- * 1.增加一个动作类型 action-types.js TOGGLE_ALL
- * 2.增加一个action  todos.js   toggleAll
- * 3.为reducer添加一个case  case TOGGLE_ALL
- * 4.在组件里事件发生的时候调用action方法 this.props.toggleAll
+ * 1.增加一个动作类型 action-types.js DEL_TODO
+ * 2.增加一个action  todos.js   delTodo
+ * 3.为reducer添加一个case  case DEL_TODO
+ * 4.在组件里事件发生的时候调用action方法 this.props.delTodo
  */
 class TodoList extends Component {
   //1.得到要切换状态的todo 2. 发射切换状态的action
@@ -24,7 +24,6 @@ class TodoList extends Component {
         {
           this.props.list.length>0?selectAll:null
         }
-
         {
           this.props.list.map((todo,index)=>(
             <li key={index} className="list-group-item">
@@ -32,7 +31,8 @@ class TodoList extends Component {
                 type="checkbox"
                 onChange={()=>this.handleChange(todo.id)}
                 checked={todo.completed}/>
-              {todo.title}
+              <span style={{textDecoration:todo.completed?'line-through':''}}>{todo.title}</span>
+              <button className="btn btn-danger btn-sm pull-right">删除</button>
             </li>
           ))
         }
