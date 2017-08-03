@@ -3,10 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import todoActions from '../store/actions/todos';
 /**
- * 1.增加一个动作类型 action-types.js
- * 2.增加一个action  todos.js
- * 3.为reducer添加一个case
- * 4.在组件里事件发生的时候调用action方法
+ * 1.增加一个动作类型 action-types.js TOGGLE_ALL
+ * 2.增加一个action  todos.js   toggleAll
+ * 3.为reducer添加一个case  case TOGGLE_ALL
+ * 4.在组件里事件发生的时候调用action方法 this.props.toggleAll
  */
 class TodoList extends Component {
   //1.得到要切换状态的todo 2. 发射切换状态的action
