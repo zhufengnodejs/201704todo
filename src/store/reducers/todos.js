@@ -25,6 +25,13 @@ export default function(state=initState,action){
           return item;
         })
       }
+    case types.TOGGLE_ALL:
+      return {
+        list:state.list.map(item=>{
+          item.completed = action.selectAll;
+          return item;
+        })
+      }
     default:
       return state;
   }

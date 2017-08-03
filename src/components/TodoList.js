@@ -17,7 +17,7 @@ class TodoList extends Component {
     return (
       <ul className="list-group">
         <li className="list-group-item" key={-1}>
-          <input type="checkbox" checked={this.props.activeCount == 0}/>{this.props.activeCount == 0?'全部取消':'全部选中'}
+          <input type="checkbox" checked={this.props.activeCount == 0} onChange={(event)=>this.props.toggleAll(event.target.checked)}/>{this.props.activeCount == 0?'全部取消':'全部选中'}
         </li>
         {
           this.props.list.map((todo,index)=>(
