@@ -16,6 +16,9 @@ class TodoList extends Component {
   render() {
     return (
       <ul className="list-group">
+        <li className="list-group-item" key={-1}>
+          <input type="checkbox" checked={this.props.activeCount == 0}/>{this.props.activeCount == 0?'全部取消':'全部选中'}
+        </li>
         {
           this.props.list.map((todo,index)=>(
             <li key={index} className="list-group-item">
@@ -31,7 +34,11 @@ class TodoList extends Component {
     )
   }
 }
-let mapStateToProps = state => ({list: state.todos.list});
+let mapStateToProps = state => ({
+  list: state.todos.list,
+  //未完成的待办事项的数量 activeCount==0 意味着全部完成
+  activeCount:state.todos.list.filter(item=>!item.completed).length
+});
 let mapDispatchToProps =  dispatch=>bindActionCreators(todoActions,dispatch)
 // state 是合并后的状态树 {todos:{list:[]},filter:'all'}
 export default connect(
