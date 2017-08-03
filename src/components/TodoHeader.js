@@ -5,8 +5,10 @@ import todoActions from '../store/actions/todos';
 class TodoHeader extends Component {
   handleKeyDown = (event)=>{
     let keyCode = event.keyCode;
-    if(keyCode == 13){
-
+    if(keyCode == 13){//如果按下的是回车键的话
+      let title = event.target.value;//获得到title的值
+      this.props.addTodo(title);
+      event.target.value = '';
     }
   }
   render() {
@@ -20,7 +22,7 @@ let mapDispatchToProps=dispatch=>bindActionCreators(todoActions,dispatch);
 /*let mapDispatchToProps= dispatch=>(
   {
     addTodo:(title)=>dispatch(todoActions.addTodo(title))
- addTodo:(title)=>dispatch({type:'ADD_TODO',title})
+    addTodo:(title)=>dispatch({type:'ADD_TODO',title})
   }
 )*/
 export default connect(
