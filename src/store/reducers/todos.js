@@ -32,6 +32,10 @@ export default function(state=initState,action){
           return item;
         })
       }
+    case types.DEL_TODO: //删除某个TODO
+      return {
+        list:state.list.filter(item=>item.id!=action.id)
+      }
     default:
       return state;
   }

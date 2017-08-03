@@ -11,5 +11,9 @@ export default {
   //全选和全消 selectAll=true全选  =false全消
   toggleAll(selectAll){
     return {type:types.TOGGLE_ALL,selectAll}
+  },
+  //删除todo
+  delTodo(id){
+   return {type:types.DEL_TODO,id};
   }
 }

@@ -32,7 +32,7 @@ class TodoList extends Component {
                 onChange={()=>this.handleChange(todo.id)}
                 checked={todo.completed}/>
               <span style={{textDecoration:todo.completed?'line-through':''}}>{todo.title}</span>
-              <button className="btn btn-danger btn-sm pull-right">删除</button>
+              <button className="btn btn-danger btn-sm pull-right" onClick={()=>this.props.delTodo(todo.id)}>删除</button>
             </li>
           ))
         }

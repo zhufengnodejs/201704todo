@@ -5,6 +5,8 @@ export const ADD_TODO = 'ADD_TODO';
 export const CHANGE_TODO_COMPLETED = 'CHANGE_TODO_COMPLETED';
 //全选和全消
 export const TOGGLE_ALL = 'TOGGLE_ALL';
+//删除某个待办事项
+export const DEL_TODO = "DEL_TODO";
 
 
 //定义过滤器的动作类型
